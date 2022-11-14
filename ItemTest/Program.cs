@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 
 namespace ItemTest
 {
@@ -39,8 +41,15 @@ namespace ItemTest
                 Console.ReadKey();
             }
             else
-            {
+            {               
                 Console.ReadKey();
+            }
+
+            //string fileName = HttpContent.Current.Request.MapPath("~/MyLogs.txt");
+            string fileName = ("D:/ItemTest/ItemTest/MyLogs.txt");
+            using (StreamWriter sw = File.AppendText(fileName))
+            {
+                sw.WriteLine(DateTime.Now.ToString() + " " + $"{Id}_{price}");
             }
         }
 
